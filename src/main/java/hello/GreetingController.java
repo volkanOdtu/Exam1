@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -12,16 +13,16 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
-@RequestMapping(value= "/api" )
+@RequestMapping("/api" )
 @Api(value= "Welcome to REST webservice" )
 public class GreetingController { 
 
 	private final AtomicLong counter = new AtomicLong();	
-	
-	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET , produces = "application/json")
 	public String greeting()
 	{
-		return "REST API";
+		return "{\"hello\":\"world\"}";
 	}
 	/*
 	@RequestMapping(value= "/greeting" , method = RequestMethod.GET ) 
