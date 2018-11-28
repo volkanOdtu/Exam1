@@ -8,39 +8,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("/api") 
 public class GreetingController {
 
 	private final AtomicLong counter = new AtomicLong();
-			
+	
+	@RequestMapping("/")
+	public String welcome()
+	{
+		return "Welcome to RESTful web service";
+	}
+	
 	@RequestMapping("/greeting")
 	public Greeting greeting(@RequestParam(value="name", defaultValue = "World")String name)
 	{
 		return new Greeting(counter.incrementAndGet(), "Hello " + name );
 	}
-	@RequestMapping("/api/Fibonacci")
-	public int fibonacci(@RequestParam(value="n")int n)
+	@RequestMapping("/Fibonacci")
+	public int fibonacci(@RequestParam(value="n" , defaultValue = "0")int n )
 	{
 		FibonacciNumber fibonacci = new FibonacciNumber();
 		int result= fibonacci.fib( n );
 		return result;
 	}
 	
-	@RequestMapping("/api/ReverseWords")
-	public String reverse(@RequestParam(value="sentence")String sentence)
+	@RequestMapping("/ReverseWords")
+	public String reverse(@RequestParam(value="sentence" , defaultValue = "")String sentence)
 	{		
 		Reversing reverse = new Reversing();
 		String result= reverse.reverse(sentence, "") ;
 		return result;
 	}
 	
-	@RequestMapping("/api/Token")
+	@RequestMapping("/Token")
 	public String getToken()
 	{				
 		return "https://join.readify.net/Status/1c3d1467-9a0f-49c2-bfc6-e30e99e827ef";
 	}
 	
-	@RequestMapping("/api/TriangleType")
-	public String TriangleType(@RequestParam(value="a")int a,@RequestParam(value="b")int b ,@RequestParam(value="c")int c)
+	@RequestMapping("/TriangleType")
+	public String TriangleType(@RequestParam(value="a" , defaultValue = "0")int a,@RequestParam(value="b" , defaultValue = "0")int b ,@RequestParam(value="c" , defaultValue = "0")int c)
 	{  
 		String result = "Error";
 		
