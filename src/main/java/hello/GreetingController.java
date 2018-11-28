@@ -7,14 +7,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 
 @RestController
 @RequestMapping(value= "/api" , method = RequestMethod.GET ) 
+@Api(value= "Welcome to REST webservice" )
 public class GreetingController {
 
 	private final AtomicLong counter = new AtomicLong();	
+	
 	
 	/*
 	@RequestMapping(value= "/greeting" , method = RequestMethod.GET ) 
