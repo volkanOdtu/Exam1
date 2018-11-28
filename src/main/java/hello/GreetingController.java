@@ -12,9 +12,9 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
-@RequestMapping(value= "/api" , method = RequestMethod.GET ) 
+// @RequestMapping(value= "/api" , method = RequestMethod.GET ) 
 @Api(value= "Welcome to REST webservice" )
-public class GreetingController {
+public class GreetingController { 
 
 	private final AtomicLong counter = new AtomicLong();	
 	
@@ -28,7 +28,7 @@ public class GreetingController {
 	@ApiOperation( value = "Returns the nth fibonacci number.", 
 				notes = "Reverses the letters of each word in a sentence." ,
 				response = Long.class )
-	@RequestMapping(value= "/Fibonacci" , method = RequestMethod.GET ) 
+	@RequestMapping(value= "/api/Fibonacci" , method = RequestMethod.GET ) 
 	public int Fibonacci(@RequestParam(value="n" , defaultValue = "0")int n )
 	{
 		FibonacciNumber fibonacci = new FibonacciNumber();
@@ -39,7 +39,7 @@ public class GreetingController {
 	@ApiOperation( value = "Reverses the letters of each word in a sentence" ,
 				   notes = "Reverses the letters of each word in a sentence." ,
 				   response = String.class)	
-	@RequestMapping(value= "/ReverseWords" , method = RequestMethod.GET ) 
+	@RequestMapping(value= "/api/ReverseWords" , method = RequestMethod.GET ) 
 	public String ReverseWords(@RequestParam(value="sentence" , defaultValue = "")String sentence)
 	{		
 		Reversing reverse = new Reversing();
@@ -49,7 +49,7 @@ public class GreetingController {
 	@ApiOperation( value = "Your token." ,
 				   notes = "Your token." ,
 				   response = UUID.class)		
-	@RequestMapping(value= "/Token" , method = RequestMethod.GET ) 	
+	@RequestMapping(value= "/api/Token" , method = RequestMethod.GET ) 	
 	public String Token()
 	{				
 		return "https://join.readify.net/Status/1c3d1467-9a0f-49c2-bfc6-e30e99e827ef";
@@ -59,7 +59,7 @@ public class GreetingController {
 	@ApiOperation( value = "Returns the type of triange given the lengths of its sides." ,
 				   notes= "Returns the type of triange given the lengths of its sides." ,
 				   response = Integer.class )			
-	@RequestMapping(value= "/TriangleType" , method = RequestMethod.GET ) 	
+	@RequestMapping(value= "/api/TriangleType" , method = RequestMethod.GET ) 	
 	public String TriangleType(@RequestParam(value="a"  )int a,@RequestParam(value="b" )int b ,@RequestParam(value="c")int c)
 	{  
 		String result = "Scalene";
