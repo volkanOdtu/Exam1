@@ -12,13 +12,16 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
-// @RequestMapping(value= "/api" , method = RequestMethod.GET ) 
 @Api(value= "Welcome to REST webservice" )
 public class GreetingController { 
 
 	private final AtomicLong counter = new AtomicLong();	
 	
-	
+	@RequestMapping(value= "/api" ) 
+	public String greeting()
+	{
+		return "REST API";
+	}
 	/*
 	@RequestMapping(value= "/greeting" , method = RequestMethod.GET ) 
 	public Greeting greeting(@RequestParam(value="name", defaultValue = "World")String name)
